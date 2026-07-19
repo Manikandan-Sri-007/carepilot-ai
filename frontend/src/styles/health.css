@@ -1,0 +1,369 @@
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #f3f8ff 0%, #eaf4ff 100%);
+}
+
+.auth-card {
+    width: min(100%, 980px);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.auth-hero {
+    padding: 48px;
+    background: linear-gradient(135deg, #0f766e 0%, #2563eb 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-hero h1 {
+    margin: 0 0 12px;
+    font-size: 2rem;
+}
+
+.auth-hero p {
+    margin: 0;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.auth-form {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.auth-form h2 {
+    margin-bottom: 4px;
+}
+
+.auth-subtitle {
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-control {
+    border-radius: 12px;
+    border: 1px solid #dbeafe;
+    padding: 12px 14px;
+}
+
+.auth-link {
+    margin-top: 12px;
+    text-align: center;
+    color: #475569;
+}
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+    background: #f6f9ff;
+}
+
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
+    color: white;
+    padding: 24px 18px;
+}
+
+.sidebar-brand {
+    margin-bottom: 25px;
+}
+
+.sidebar-brand h3 {
+    margin: 0 0 6px;
+}
+
+.sidebar-brand p {
+    margin: 0;
+    color: #cbd5e1;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 11px 12px;
+    border-radius: 10px;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.app-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.topbar h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-pill {
+    background: #e0f2fe;
+    color: #0f766e;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.content {
+    padding: 24px 28px 40px;
+}
+
+.hero-card,
+.form-card,
+.result-card,
+.info-card,
+.stat-card,
+.history-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.hero-card {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hero-card-highlight {
+    background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
+    border: 1px solid #bfdbfe;
+}
+
+.hero-card.compact {
+    display: block;
+}
+
+.eyebrow {
+    color: #2563eb;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+}
+
+.hero-card h1,
+.result-card h3,
+.info-card h3,
+.history-card h3 {
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.stats-grid,
+.cards-grid,
+.history-list,
+.dashboard-grid {
+    display: grid;
+    gap: 16px;
+}
+
+.stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 20px;
+}
+
+.cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dashboard-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+}
+
+.stat-card,
+.info-card,
+.result-card,
+.history-card,
+.assistant-panel,
+.health-score-card {
+    padding: 20px;
+}
+
+.form-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.result-card.error {
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    margin-top: 16px;
+}
+
+.health-score-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #0f766e 0%, #2563eb 100%);
+    color: white;
+    border-radius: 20px;
+}
+
+.score-pill {
+    background: rgba(255,255,255,0.2);
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.assistant-panel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+}
+
+.assistant-panel ul {
+    padding-left: 18px;
+    color: #334155;
+}
+
+.btn {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #2563eb 0%, #0f766e 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: #eff6ff;
+    color: #1d4ed8;
+    margin-top: 10px;
+}
+
+.btn-outline {
+    background: white;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+
+.toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background: #0f172a;
+    color: white;
+    padding: 12px 14px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+    z-index: 1000;
+}
+
+.toast button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.tag {
+    display: inline-block;
+    background: #ecfeff;
+    color: #0f766e;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.history-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.muted {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+    .auth-card {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid,
+    .cards-grid,
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .content,
+    .topbar {
+        padding: 16px;
+    }
+
+    .hero-card {
+        flex-direction: column;
+        align-items: start;
+        gap: 12px;
+    }
+}
