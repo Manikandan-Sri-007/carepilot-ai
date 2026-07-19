@@ -1,11 +1,19 @@
+import os
+
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-DATABASE_URL = "sqlite:///./carepilot.db"
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./carepilot.db")
+
+# Render supplies PostgreSQL URLs with this legacy scheme on some plans.
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False}
+    connect_args=connect_args,
 )
 
 SessionLocal = sessionmaker(

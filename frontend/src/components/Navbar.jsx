@@ -9,6 +9,7 @@ function Navbar() {
             await api.post("/logout");
         } finally {
             sessionStorage.removeItem("carepilot_authenticated");
+            sessionStorage.removeItem("carepilot_access_token");
             navigate("/login");
         }
     };

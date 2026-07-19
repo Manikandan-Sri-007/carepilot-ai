@@ -40,7 +40,7 @@ function Dashboard() {
 
         try {
             setAssistantLoading(true);
-            const response = await api.post("/assistant/chat", { message: prompt.trim() });
+            const response = await api.post("/chat", { message: prompt.trim() });
             setAssistantReply(response.data?.response || "No response is available right now.");
         } catch (err) {
             console.error(err);
@@ -124,8 +124,8 @@ function Dashboard() {
                                     {assistantReply && <div className="assistant-reply">{assistantReply}</div>}
                                 </section>
                                 <section className="dashboard-card"><p className="eyebrow">Quick actions</p><div className="quick-actions">
-                                    <button onClick={() => navigate("/symptoms")}>Analyze symptoms <span>→</span></button>
-                                    <button onClick={() => navigate("/reports")}>Upload medical report <span>→</span></button>
+                                    <button onClick={() => navigate("/symptom-checker")}>Analyze symptoms <span>→</span></button>
+                                    <button onClick={() => navigate("/report-analysis")}>Upload medical report <span>→</span></button>
                                     <button onClick={() => navigate("/history")}>View history <span>→</span></button>
                                     <button onClick={() => navigate("/profile")}>Manage profile <span>→</span></button>
                                 </div></section>

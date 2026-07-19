@@ -21,20 +21,28 @@ function Login() {
         setLoading(true);
 
         try {
-            await api.post("/login", {
+            const response = await api.post("/auth/login", {
                 email: normalizedEmail,
                 password
             });
 
-            // The JWT is held in the server-issued HttpOnly cookie. Verify it by
-            // loading the authoritative profile before entering the application.
-            await api.get("/profile");
-            sessionStorage.setItem("carepilot_authenticated", "true");
+            const token = response.data?.access_token;
+            if (!token) {
+                throw new Error("The server did not return an authentication token.");
+            }
+
+            localStorage.setItem("carepilot_access_token", token);
+            localStorage.setItem("carepilot_refresh_token", response.data?.refresh_token || "");
+            localStorage.setItem("carepilot_authenticated", "true");
 
             navigate("/dashboard");
         } catch (error) {
-            alert("Invalid email or password");
-            console.error(error);
+            sessionStorage.removeItem("carepilot_access_token");
+            const message = error.response?.data?.detail
+                || (error.request ? "CarePilot AI is temporarily unavailable. Please try again shortly." : error.message)
+                || "Unable to sign in. Please try again.";
+            alert(message);
+            if (import.meta.env.DEV) console.error(error);
         } finally {
             setLoading(false);
         }

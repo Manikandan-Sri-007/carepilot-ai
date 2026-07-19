@@ -20,7 +20,7 @@ function SymptomAnalysis() {
         setToast("");
 
         try {
-            const response = await api.post("/analyze/symptoms", { symptoms });
+            const response = await api.post("/analysis/symptoms", { symptoms });
             setResult(response.data);
             setToast("Analysis complete. Your AI summary is ready.");
         } catch (err) {

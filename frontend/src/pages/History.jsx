@@ -12,7 +12,7 @@ function History() {
     useEffect(() => {
         const loadHistory = async () => {
             try {
-                const response = await api.get("/history");
+                const response = await api.get("/analysis/history");
                 setItems(response.data);
             } catch (err) {
                 setError("Unable to load your analysis history right now.");

@@ -1,13 +1,17 @@
 import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({ children }) {
-    const isAuthenticated = sessionStorage.getItem("carepilot_authenticated") === "true";
+import { useAuth } from "../hooks/useAuth";
 
-    if (!isAuthenticated) {
-        return <Navigate to="/login" replace />;
-    }
+export default function ProtectedRoute({ children }) {
+  const { loading, isAuthenticated } = useAuth();
 
-    return children;
+  if (loading) {
+    return <div className="grid min-h-screen place-items-center text-slate-600">Loading secure workspace...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
 }
-
-export default ProtectedRoute;

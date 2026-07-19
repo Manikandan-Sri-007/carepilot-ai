@@ -28,7 +28,7 @@ function Register() {
         setLoading(true);
 
         try {
-            await api.post("/register", {
+            await api.post("/auth/register", {
                 name: normalizedName,
                 email: normalizedEmail,
                 password
@@ -37,8 +37,10 @@ function Register() {
             alert("Registration successful. Please log in.");
             navigate("/login");
         } catch (error) {
-            alert(error.response?.data?.detail || "Unable to create account");
-            console.error(error);
+            const message = error.response?.data?.detail
+                || (error.request ? "CarePilot AI is temporarily unavailable. Please try again shortly." : "Unable to create account");
+            alert(message);
+            if (import.meta.env.DEV) console.error(error);
         } finally {
             setLoading(false);
         }

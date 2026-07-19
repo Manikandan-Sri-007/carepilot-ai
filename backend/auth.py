@@ -6,6 +6,10 @@ from backend import models
 from backend import schemas
 from backend.database import get_db
 
+
+def _normalize_email(email: str) -> str:
+    return email.strip().lower()
+
 pwd_context = CryptContext(
     schemes=["bcrypt"],
     deprecated="auto"
@@ -21,13 +25,14 @@ def verify_password(plain_password: str, hashed_password: str):
 
 
 def create_user(db: Session, user: schemas.UserRegister):
-
     hashed_password = hash_password(user.password)
+    normalized_email = _normalize_email(user.email)
 
     new_user = models.User(
         name=user.name,
-        email=user.email.lower(),
-        password=hashed_password
+        email=normalized_email,
+        password=hashed_password,
+        created_at=None,
     )
 
     db.add(new_user)
@@ -42,11 +47,13 @@ def create_user(db: Session, user: schemas.UserRegister):
 
 
 def authenticate_user(db: Session, email: str, password: str):
-
-    normalized_email = email.strip().lower()
+    normalized_email = _normalize_email(email)
     user = db.query(models.User).filter(models.User.email == normalized_email).first()
 
     if not user:
+        return None
+
+    if not getattr(user, "password", None):
         return None
 
     if not verify_password(password, user.password):
